@@ -17,9 +17,9 @@ fn get_host_name() -> Result<HostName, io::Error> {
     let mut result: String = String::new();
     file.read_to_string(&mut result)
         .expect("Error while reading file");
-    let vv: Vec<&str> = result.split(" ").collect();
+    let result: &str = result.trim();
     let host_name = HostName {
-        hostname: vv.get(0).unwrap().parse().unwrap(),
+        hostname: result.parse().unwrap(),
     };
     Ok(host_name)
 }
